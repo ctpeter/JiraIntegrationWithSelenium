@@ -29,7 +29,9 @@ public class BaseTest {
 	public void setUpTest(String browser) {
 		if (browser.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+                        ChromeOptions crOptions = new ChromeOptions();
+                        crOptions.addArguments("--headless", "--disable-dev-shm-usage");
+			driver = new ChromeDriver(crOptions);
 		} else if (browser.equals("ff")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
